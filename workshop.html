@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Workshop Gallery | Joinery Space</title>
+ <style>
+  /* Consistency with Main Page */
+  html { scroll-behavior: smooth; }
+  body { 
+   margin: 0; font-family: 'Segoe UI', sans-serif; background: #fdfdfd; color: #333; 
+   min-height: 100vh; display: flex; flex-direction: column; padding-bottom: 70px; 
+  }
+
+  /* Header Layout */
+  header { 
+   background: white; padding: 15px 30px; border-bottom: 1px solid #eaeaea; 
+   position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .header-container {
+   max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;
+  }
+  .header-left { flex: 1; } 
+  header img { width: 200px; height: auto; display: block; margin: 0 auto; }
+  .header-right { flex: 1; text-align: right; }
+
+  /* Back Button Style */
+  .btn-back {
+   background: #eeeeee; color: #333; padding: 8px 16px; text-decoration: none;
+   border-radius: 4px; font-size: 0.85rem; transition: 0.3s; display: inline-block;
+   border: 1px solid #ddd;
+  }
+  .btn-back:hover { background: #e0e0e0; }
+
+  .hero { padding: 50px 20px; text-align: center; background: #f1f1f1; border-bottom: 1px solid #eee; }
+  .hero h1 { margin: 0; font-size: 2.2rem; font-weight: 300; }
+  .hero p { color: #7f8c8d; margin-top: 10px; }
+
+  /* Gallery Grid */
+  .gallery { 
+   display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+   gap: 25px; padding: 40px; max-width: 1400px; margin: 0 auto; 
+  }
+  .gallery img { 
+   width: 100%; height: 400px; border-radius: 4px; object-fit: cover; 
+   box-shadow: 0 4px 12px rgba(0,0,0,0.08); background: #eee; 
+  }
+
+  /* Compact Footer */
+  footer { 
+   background: #1a1a1a; color: #bdc3c7; text-align: center; padding: 8px 20px; 
+   font-size: 0.8rem; position: fixed; bottom: 0; width: 100%; z-index: 1000; 
+  }
+  .footer-content { display: flex; flex-direction: column; gap: 2px; }
+  footer a { color: #ffffff; text-decoration: none; }
+
+  @media (max-width: 600px) {
+   .header-container { flex-direction: column; gap: 10px; }
+   header img { width: 150px; }
+   .gallery { padding: 20px; }
+   .gallery img { height: auto; }
+  }
+ </style>
+</head>
+<body>
+
+ <header>
+  <div class="header-container">
+   <div class="header-left">
+    <a href="index.html" class="btn-back">← Main Gallery</a>
+   </div>
+   <img src="logo.png" alt="Joinery Space logo">
+   <div class="header-right"></div>
+  </div>
+ </header>
+
+ <section class="hero">
+  <h1>Workshop Gallery</h1>
+  <p>Behind the scenes craftsmanship</p>
+ </section>
+
+ <main>
+  <section class="gallery" id="workshop-gallery"></section>
+ </main>
+
+ <footer>
+  <div class="footer-content">
+   <div><a href="tel:+447906928788">+44 7906 928788</a> | <a href="mailto:hello@joineryspace.co.uk">hello@joineryspace.co.uk</a></div>
+   <div>Unit 4, Scotch Lake Farm, Moor Lane, UB7 0AP</div>
+   <div style="opacity: 0.6;">© 2026 Joinery Space</div>
+  </div>
+ </footer>
+
+ <script>
+  const galleryContainer = document.getElementById('workshop-gallery');
+  
+  // This loop is specifically set to start at 48 and end at 95
+  for (let i = 48; i <= 95; i++) {
+   const fileName = `image (${i}).webp`;
+   const img = document.createElement('img');
+   img.src = fileName;
+   img.alt = `Workshop Image ${i}`;
+   img.loading = "lazy";
+   
+   // Error handling: if an image doesn't exist, don't show a broken icon
+   img.onerror = function() { this.style.display = 'none'; };
+   
+   galleryContainer.appendChild(img);
+  }
+ </script>
+</body>
+</html>
